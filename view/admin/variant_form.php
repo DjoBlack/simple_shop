@@ -1,7 +1,7 @@
 <?php require './view/partials/header.php'; ?>
 
 
-<form method="POST" action="/admin/variants">
+<form method="POST" action="/admin/variant_create">
 	<br>
 	<div class="form-group">
 		<label for="variantTitleArea">Variant Title</label>
@@ -32,7 +32,7 @@
     <label for="formControlSelect">Example select</label>
 	    <select class="form-control" id="formControlSelect" name="product_id">
 	    	<?php foreach ($products as $product){ ?>
-			    <option value="<?php echo $product->id; ?>">
+			    <option value="<?php echo $product->product_id; ?>">
 			    	<?php echo $product->title; ?>
 			    </option>
 			<?php } ?>

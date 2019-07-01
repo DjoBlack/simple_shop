@@ -1,4 +1,3 @@
-		
 		<footer class="pt-4 border-top">
 	        <div class="row">
 	          <div class="col-12 col-md">

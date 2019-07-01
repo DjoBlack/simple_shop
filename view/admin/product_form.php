@@ -1,7 +1,7 @@
 <?php require './view/partials/header.php'; ?>
 
 
-<form method="POST" action="/admin/products">
+<form method="POST" action="/admin/product_create">
 	<br>
 	<div class="form-group">
 		<label for="productTitleArea">Product Title</label>
@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="form-group">
-		<input type="submit" name="Add variant">
+		<input type="submit" name="Add product">
 	</div>
 </form>
 

@@ -9,10 +9,10 @@ class VariantRepo
 		$stmt->execute([$product_id, $title, $descr, $image, $amount, $price]);
 	}
 
-	public static function getByProductId($prodcut_id)
+	public static function getByProductId($product_id)
 	{
 		$stmt = self::conn()->prepare('SELECT * FROM variants WHERE product_id = ?');
-		$stmt->execute([$prodcut_id]);
+		$stmt->execute([$product_id]);
 
 		return $stmt->fetchAll(PDO::FETCHCLASS, 'VariantModel');
 	}
