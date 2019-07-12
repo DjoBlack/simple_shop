@@ -9,10 +9,10 @@ class BaseController
 		header("location: $url");
 	}
 
-	// protected static function ensureUserSession($field)
-	// {
-	// 	if(!isset($_SESSION['field'])) {
-	// 		$_SESSION['field'] = [];
-	// 	}
-	// }
+	public static function ensureSession($field)
+	{
+		if(!isset($_SESSION[$field])) {
+			$_SESSION[$field] = [];
+		}
+	}
 }

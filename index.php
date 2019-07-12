@@ -16,13 +16,18 @@ require_once './repos/user_repo.php';
 
 require_once './controllers/base_controller.php';
 
+BaseController::ensureSession('user');
+BaseController::ensureSession('cart');
 
+require_once './controllers/cart_controller.php';
 
 require_once './router.php';
 require_once './controllers/main_controller.php';
 require_once './controllers/admin_controllers/product_controller.php';
 require_once './controllers/admin_controllers/variant_controller.php';
 require_once './controllers/user_controller.php';
+
+
 
 $router = new Router();
 
@@ -36,6 +41,7 @@ $router->register('POST', '/user/logout', function() {UserController::logout(); 
 
 $router->register('GET', '/cart', 'CartController::index');
 $router->register('POST', '/cart/add', 'CartController::addToCart');
+$router->register('POST', '/cart/substract', 'CartController::substractFromCart');
 $router->register('POST', '/cart/remove', 'CartController::removeFromCart');
 
 $router->register('GET', '/', function() {MainController::index(); });      //анонимноая функция 

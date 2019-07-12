@@ -15,9 +15,13 @@
       <a href="#" class="card-link">read more</a></p>
     </div>
 
-    <!-- <div class="card-body">
-      <a href="#" class="card-link">Details</a>
-    </div> -->
+    <div class="card-body">
+      <form action="/cart/add" method="POST">
+        <input type="hidden" name="variant_id" value="<?php echo $product->variant_id; ?>">
+        <button>Add to cart</button>
+      </form>
+      
+    </div>
 <!--     <div class="card-body">
 
       <a href="#" class="card-link">Add to cart</a>

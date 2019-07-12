@@ -2,19 +2,9 @@
 
 class ProductRepo 
 {
-	public static function getProductsById()
-	{
-		$len = count($ids);
-		$query = 'SELECT * FROM products WHERE product_id IN (' .str_repeat("?", $len - 1)).'?)';
-		$stmt = self::conn()->prepare($query);
-		$stmt->execute($ids);
-
-		return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
-	}
-
 	public static function getAll()
 	{
-		$res = self::conn()->query('SELECT p.product_id, p.title, p.description, v.image 
+		$res = self::conn()->query('SELECT p.product_id, v.variant_id, p.title, p.description, v.image 
 									FROM products AS p
 									LEFT JOIN variants AS v ON p.product_id = v.product_id 
 									GROUP BY p.product_id');
