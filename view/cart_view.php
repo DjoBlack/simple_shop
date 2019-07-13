@@ -3,31 +3,33 @@
 <br>
 <div class="row">
 	<table class="table">
-		<?php foreach ($variants as $variant) { ?>
-			<tr>
-				<td>
-					<?= $variant->variant_title; ?>
-				</td>
-				<td id="amount-<?php echo $variant->variant_id; ?>">
-					<?= $variant->amount; ?>
-				</td>
-				<td>
-					<form action="/cart/add" method="POST">
-	        			<input type="hidden" name="variant_id" value="<?php echo $variant->variant_id; ?>">
-	       				<button class="add-amount" data-id="<?php echo $variant->variant_id; ?>">+</button>
-      				</form>
-				</td>
-				<td>
-					<form action="/cart/substract" method="POST">
-	        			<input type="hidden" name="variant_id" value="<?php echo $variant->variant_id; ?>">
-	       				<button class="substract-amount" data-id="<?php echo $variant->variant_id; ?>">-</button>
-      				</form>
-				</td>
-			</tr>
-		<?php } ?>
+		<?php if(!empty($_SESSION['cart'])){ ?>
+			<?php foreach ($variants as $variant) { ?>
+				<tr>
+					<td>
+						<?= $variant->variant_title; ?>
+					</td>
+					<td id="amount-<?php echo $variant->variant_id; ?>">
+						<?= $variant->amount; ?>
+					</td>
+					<td>
+						<form action="/cart/add" method="POST">
+		        			<input type="hidden" name="variant_id" value="<?php echo $variant->variant_id; ?>">
+		       				<button class="add-amount" data-id="<?php echo $variant->variant_id; ?>">+</button>
+	      				</form>
+					</td>
+					<td>
+						<form action="/cart/substract" method="POST">
+		        			<input type="hidden" name="variant_id" value="<?php echo $variant->variant_id; ?>">
+		       				<button class="substract-amount" data-id="<?php echo $variant->variant_id; ?>">-</button>
+	      				</form>
+					</td>
+				</tr>
+			<?php }} else { echo 'Your cart is empty!'; }?>
 	</table>
 </div>
 <div>
+	<a href="/order/new">Submit order</a>
 	<form action="/cart/remove" method="POST">
 	   		<button>Remove all from cart</button>
 	</form>

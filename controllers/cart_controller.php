@@ -4,16 +4,9 @@ class CartController extends BaseController
 {
 	public static function index()
 	{
+		$variants = self::getVariantsFromCart();
 
-		$ids = array_keys($_SESSION['cart']);
-		$variants = VariantRepo::getVariantsForCart($ids);
-
-		foreach ($variants as $variant) {
-			
-			$variant->amount = $_SESSION['cart'][$variant->variant_id];
-		}
-
-		require_once './view/cart.php';
+		require_once './view/cart_view.php';
 	}
 
 	public static function addToCart()
@@ -50,7 +43,6 @@ class CartController extends BaseController
 			unset($_SESSION['cart'][$variantId]);
 		}
 
-		
 		// self::redirect('/cart');
 
 		echo json_encode([

@@ -15,4 +15,20 @@ class BaseController
 			$_SESSION[$field] = [];
 		}
 	}
+
+	public static function getVariantsFromCart()
+	{
+		if(!empty($_SESSION['cart'])){
+			$ids = array_keys($_SESSION['cart']);
+			
+			$variants = VariantRepo::getVariantsForCart($ids);
+
+			foreach ($variants as $variant) {
+						
+				$variant->amount = $_SESSION['cart'][$variant->variant_id];
+			}
+
+			return $variants;
+		}
+	}
 }

@@ -18,7 +18,7 @@
     <div class="card-body">
       <form action="/cart/add" method="POST">
         <input type="hidden" name="variant_id" value="<?php echo $product->variant_id; ?>">
-        <button>Add to cart</button>
+        <button data-id="<?php echo $product->variant_id; ?>" class="add-to-cart">Add to cart</button>
       </form>
       
     </div>
