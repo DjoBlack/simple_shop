@@ -16,6 +16,16 @@ class Router
 		$this->method = $_SERVER['REQUEST_METHOD'];
 	}
 
+	public function currentRoute()
+	{
+		return $this->r;
+	}
+
+	public function currentMethod()
+	{
+		return $this->method;
+	}
+
 	public function register($httpVerb, $path, $handler)
 	{
 		$this->routes[$httpVerb][$path] = $handler;
@@ -29,6 +39,6 @@ class Router
 			return;
 		}
 
-		echo 'not found';
+		echo '404 not found';
 	}
 }

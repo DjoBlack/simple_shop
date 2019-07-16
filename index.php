@@ -23,6 +23,7 @@ BaseController::ensureSession('cart');
 require_once './controllers/cart_controller.php';
 
 require_once './router.php';
+require_once './ACL.php';
 require_once './controllers/main_controller.php';
 require_once './controllers/admin_controllers/product_controller.php';
 require_once './controllers/admin_controllers/variant_controller.php';
@@ -33,6 +34,9 @@ require_once './controllers/admin_controllers/admin_order_controller.php';
 session_start();
 
 $router = new Router();
+$acl = new ACL($router->currentRoute(), $router->currentMethod());
+
+$acl->check();
 
 $router->register('GET', '/user/register_form', 'UserController::registerForm');
 $router->register('POST', '/user/register', function() {UserController::register(); });

@@ -1,7 +1,7 @@
 <?php require './view/partials/header.php'; ?>
 
 <br>
-<div class="row">
+<div class="row container">
 	<table class="table">
 		<?php if(!empty($_SESSION['cart'])){ ?>
 			<?php foreach ($variants as $variant) { ?>
@@ -25,11 +25,18 @@
 	      				</form>
 					</td>
 				</tr>
-			<?php }} else { echo 'Your cart is empty!'; }?>
+		<?php }} else { ?> 
+			<h2>Your cart is empty!</h2> 
+		<?php } ?>
 	</table>
 </div>
 <div>
-	<a href="/order/new">Submit order</a>
+	<?php if(!empty($_SESSION['user'])){ ?>
+		<?php if(!empty($_SESSION['cart'])){ ?>
+			<form action="/order/new" method="GET">
+				<button>Submit order</button>
+			</form><br>
+	<?php }} ?>
 	<form action="/cart/remove" method="POST">
 	   		<button>Remove all from cart</button>
 	</form>

@@ -24,7 +24,6 @@ class UserRepo {
 		return false;
 	}
 
-
 	private static function preparePassword($pass, $salt)
 	{
 		return hash('sha256', $pass . $salt);
