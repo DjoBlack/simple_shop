@@ -21,10 +21,12 @@ class UserController extends BaseController
 		{
 			$_SESSION[self::$userSessionField] = $user;
 
+			Flash::addFlashMsg('Welcome!');
 			self::redirect('/');
 		} else {
 			self::redirect('/user/login_form');
 		}
+		
 	}
 
 	public static function register()

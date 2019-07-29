@@ -31,18 +31,21 @@
 	</table>
 </div>
 <div>
-	<?php if(!empty($_SESSION['user'])){ ?>
 		<?php if(!empty($_SESSION['cart'])){ ?>
 			<form action="/order/new" method="GET">
 				<button>Submit order</button>
 			</form><br>
-	<?php }} ?>
+	<?php } ?>
 	<form action="/cart/remove" method="POST">
 	   		<button>Remove all from cart</button>
 	</form>
 </div>
 
 <?php require './view/partials/footer.php'; ?>
+
+
+
+
 
 <script>
 	$(document).ready(function() {

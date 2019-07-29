@@ -1,17 +1,16 @@
 <?php require './view/partials/header.php'; ?>
 
-<?php  if(!empty($_SESSION[BaseController::$userSessionField])){ ?>
 
-	<form method="POST" action="/order">
+<form method="POST" action="/order">
+	<?php  if(empty($_SESSION[BaseController::$userSessionField])){ ?>
+
+		<input type="email" name="email" placeholder="Enter your email">
+
+	<?php } ?>
+
 		<input type="text" name="address" placeholder="Enter your adress">
 		<input type="submit" name="Submit order">
-	</form>
-
-<?php } else { ?>
-
-	<h2>Please login!</h2>
-
-<?php } ?>
+</form>
 
 
 

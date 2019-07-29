@@ -9,7 +9,13 @@ class OrderController extends BaseController
 
 	public static function orderCreate()
 	{
-		$user = $_SESSION[BaseController::$userSessionField];
+		if(empty($_SESSION[BaseController::$userSessionField])){
+			$email = $_POST['email'];
+			$user = UserRepo::autoRegisterUser($email);
+		} else {
+			$user = $_SESSION[BaseController::$userSessionField];
+		}
+	
 		$address = $_POST['address'];
 		$variants = self::getVariantsFromCart();
 

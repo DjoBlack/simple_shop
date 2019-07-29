@@ -3,6 +3,7 @@
 require_once './configs/config.php';
 require_once './configs/utils.php';
 require_once './configs/connection.php';
+require_once './configs/flash.php';
 
 require_once './models/product_model.php';
 require_once './models/variant_model.php';
@@ -16,11 +17,13 @@ require_once './repos/user_repo.php';
 require_once './repos/order_repo.php';
 
 require_once './controllers/base_controller.php';
+require_once './controllers/cart_controller.php';
+
+session_start();
 
 BaseController::ensureSession('user');
 BaseController::ensureSession('cart');
-
-require_once './controllers/cart_controller.php';
+BaseController::ensureSession('flash');
 
 require_once './router.php';
 require_once './ACL.php';
@@ -31,7 +34,7 @@ require_once './controllers/user_controller.php';
 require_once './controllers/order_controller.php';
 require_once './controllers/admin_controllers/admin_order_controller.php';
 
-session_start();
+
 
 $router = new Router();
 $acl = new ACL($router->currentRoute(), $router->currentMethod());

@@ -1,6 +1,6 @@
 <?php
 
-class ACL
+class ACL extends BaseController
 {
 	private $route;
 	private $method;
@@ -21,7 +21,7 @@ class ACL
 
 		if(empty($_SESSION[BaseController::$userSessionField]))
 		{
-			echo 'Please Login!';
+			BaseController::redirect('/user/login_form');
 			exit(401);
 		}
 
@@ -30,7 +30,7 @@ class ACL
 			return;
 		}
 
-		echo 'Access denied';
+		BaseController::redirect('/');
 		exit(401);
 	}
 

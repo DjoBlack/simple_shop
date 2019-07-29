@@ -54,3 +54,10 @@
 				</form>
 			</div>
 		</nav>
+
+	<?php foreach (Flash::getFlashMsg() as $message) { ?>
+		<br>
+		<div class="alert alert-primary" role="alert">
+  			<strong><?php echo $message; ?></strong>
+		</div>
+	<?php } ?> 
