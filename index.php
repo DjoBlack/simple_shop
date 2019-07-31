@@ -58,12 +58,12 @@ $router->register('GET', '/order/new', 'OrderController::orderForm');
 $router->register('POST', '/order', 'OrderController::orderCreate');
 $router->register('GET', '/order/complete', 'OrderController::orderComplete');
 
-$router->register('GET', '/', function() {MainController::index(); });      //анонимноая функция 
-$router->register('GET', '/about', function() {MainController::about_us(); }); //чтобы НЕ использ.
-$router->register('GET', '/features', function() {MainController::features(); }); //интерпритатор
+$router->register('GET', '/', function() {MainController::index(); });
+$router->register('GET', '/about', function() {MainController::about_us(); });
+$router->register('GET', '/features', function() {MainController::features(); });
 
 $router->register('GET', '/admin/product_form', 'ProductController::createForm'); 
-$router->register('POST', '/admin/product_create', 'ProductController::create'); //метапрограммирование
+$router->register('POST', '/admin/product_create', 'ProductController::create');
 
 $router->register('GET', '/admin/variant_form', 'VariantController::createForm');
 $router->register('POST', '/admin/variant_create', 'VariantController::create');
